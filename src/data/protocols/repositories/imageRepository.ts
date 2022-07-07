@@ -1,7 +1,9 @@
-import { Image } from '@/domain/entities';
+import { Image } from "@/domain/entities";
 
 export interface IImageRepository {
   create: (data: Image) => Promise<{ id: string }>;
   getById: (id: string) => Promise<Image>;
-  deleteById: (id: string) => Promise<{ id: string }>;
+  getByUser: (user_id: string) => Promise<Image[]>;
+  deleteById: (id: string) => Promise<void>;
+  getAll: (id: string) => Promise<Image[]>;
 }
