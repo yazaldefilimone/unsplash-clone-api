@@ -1,10 +1,10 @@
-import { ILoginUserUseCase } from '@/domain/usecases/user';
-import { IUserRepository } from '@/data/protocols/repositories';
+import { ILoginUserUseCase } from "@/domain/usecases/user";
+import { IUserRepository } from "@/data/protocols/repositories";
 
-import { left, right } from '@/shared/error-handler/either';
-import { NotFoundError, UnexpectedError } from '@/domain/errors';
-import { Encrypter, HashComparer } from '@/data/protocols/cryptography';
-import { InvalidParamError } from '@/domain/errors/invalid-param-error';
+import { left, right } from "@/shared/error-handler/either";
+import { NotFoundError, UnexpectedError } from "@/domain/errors";
+import { Encrypter, HashComparer } from "@/data/protocols/cryptography";
+import { InvalidParamError } from "@/domain/errors/invalid-param-error";
 
 export class LoginUserUseCase implements ILoginUserUseCase {
   private readonly userRepository: IUserRepository;
@@ -21,13 +21,12 @@ export class LoginUserUseCase implements ILoginUserUseCase {
     try {
       const isExists = await this.userRepository.getByEmail(data.email);
       if (!isExists) {
-        return left(new NotFoundError('user'));
+        return left(new NotFoundError("user"));
       }
 
-      const result = await this.hashComparer.compare(isExists.password, data.password);
-
+      const result = await this.hashComparer.compare(data.password, isExists.password);
       if (!result) {
-        return left(new InvalidParamError('password'));
+        return left(new InvalidParamError("password"));
       }
 
       const token = await this.encrypter.encrypt({ email: isExists.email, id: isExists.id as string });
