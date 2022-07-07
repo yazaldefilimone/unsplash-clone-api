@@ -11,7 +11,7 @@ export class CreateImageUseCase implements ICreateImageUseCase {
   }
 
   async perform(data: ICreateImageUseCase.Input): ICreateImageUseCase.Output {
-    const images = await this.imageRepository.getByUser(data.user_id);
+    const images = await this.imageRepository.getByUser(data.userId);
 
     if (images.length > 0) {
       const isExists = images.find((img) => img.url === data.url);
