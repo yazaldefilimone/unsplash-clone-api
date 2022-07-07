@@ -5,5 +5,5 @@ export interface IImageRepository {
   getById: (id: string) => Promise<Image>;
   getByUser: (user_id: string) => Promise<Image[]>;
   deleteById: (id: string) => Promise<void>;
-  getAll: (id: string) => Promise<Image[]>;
+  getAll: () => Promise<Image[]>;
 }
