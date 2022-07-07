@@ -1,7 +1,6 @@
-import { AccessDeniedError } from "@/presentation/errors";
 import { ILoadAccountByToken } from "@/domain/usecases/user";
 import { Request, Response } from "express";
-import { UnexpectedError } from "@/domain/errors";
+import { UnexpectedError, AccessDeniedError } from "@/domain/errors";
 
 export class AuthMiddleware {
   private readonly loadAccountByToken: ILoadAccountByToken;
