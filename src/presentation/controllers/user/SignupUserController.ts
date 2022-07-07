@@ -13,7 +13,7 @@ export class SignupUserController {
       const result = await this.signupUserUseCase.perform(body);
 
       if (result.isLeft()) {
-        return response.status(401).json({ message: result.value.message });
+        return response.status(400).json({ message: result.value.message });
       }
       return response.status(201).send(result.value);
     } catch (error: any) {

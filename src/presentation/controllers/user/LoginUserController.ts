@@ -13,9 +13,9 @@ export class LoginUserController {
       const result = await this.loginUserUseCase.perform(body);
 
       if (result.isLeft()) {
-        return response.status(401).json({ message: result.value.message });
+        return response.status(400).json({ message: result.value.message });
       }
-      return response.status(201).send(result.value);
+      return response.status(200).send(result.value);
     } catch (error: any) {
       return response.status(500).json({ message: error.message });
     }
