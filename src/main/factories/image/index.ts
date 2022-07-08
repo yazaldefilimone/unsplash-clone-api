@@ -5,6 +5,8 @@ import {
   FindUserImageUseCase,
   FindAllImageUseCase,
 } from "@/data/usecases/image";
+import { BcryptAdapter } from "@/infrastructure/cryptography";
+import { UserRepository } from "@/infrastructure/mongodb";
 import { ImageRepository } from "@/infrastructure/mongodb/imageRepository";
 import {
   CreateImageController,
@@ -15,6 +17,8 @@ import {
 } from "@/presentation/controllers/images";
 
 const imageRepository = new ImageRepository();
+const bcryptAdapter = new BcryptAdapter();
+const userRepository = new UserRepository();
 
 export const createImageFactory = function () {
   const createImageUseCase = new CreateImageUseCase(imageRepository);
@@ -35,7 +39,7 @@ export const findUserImageFactory = function () {
 };
 
 export const deleteImageFactory = function () {
-  const deleteImageUseCase = new DeleteImageUseCase(imageRepository);
+  const deleteImageUseCase = new DeleteImageUseCase(imageRepository, userRepository, bcryptAdapter);
   const deleteImageController = new DeleteImageController(deleteImageUseCase);
   return deleteImageController;
 };
