@@ -19,9 +19,7 @@
     "module-alias": "^2.2.2",
     "mongoose": "^6.4.3",
     "ts-node": "^10.8.2",
-    "uuid": "^8.3.2"
-  },
-  "devDependencies": {
+    "uuid": "^8.3.2",
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.12",
     "@types/dotenv": "^8.2.0",
@@ -34,5 +32,6 @@
     "@types/uuid": "^8.3.4",
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.7.4"
-  }
+  },
+  "devDependencies": {}
 }
