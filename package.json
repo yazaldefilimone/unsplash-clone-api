@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "npx ts-node-dev ./src/main/server.ts",
-    "start": "npx ts-node./src/main/server.ts"
+    "start": "tsc && node ./dist/main/server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
