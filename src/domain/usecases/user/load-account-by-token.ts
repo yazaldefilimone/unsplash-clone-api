@@ -6,5 +6,5 @@ export interface ILoadAccountByToken {
 }
 
 export namespace ILoadAccountByToken {
-  export type Output = Promise<Either<NotFoundError, { id: string }>>;
+  export type Output = Promise<Either<NotFoundError, { id: string; email: string }>>;
 }
