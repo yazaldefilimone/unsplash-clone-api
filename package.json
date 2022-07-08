@@ -5,7 +5,8 @@
   "author": "Yazalde Filimone <yazaldefilimon@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "npx ts-node-dev ./src/main/server.ts"
+    "dev": "npx ts-node-dev ./src/main/server.ts",
+    "start": "npx ts-node./src/main/server.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -17,6 +18,7 @@
     "jsonwebtoken": "^8.5.1",
     "module-alias": "^2.2.2",
     "mongoose": "^6.4.3",
+    "ts-node": "^10.8.2",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
