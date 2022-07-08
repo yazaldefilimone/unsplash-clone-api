@@ -19,7 +19,7 @@ imageRoutes.get("/findId/:id", authUserJwtMiddleware, (request, response) =>
 );
 imageRoutes.get("/findUser/:userId", (request, response) => findUserImageFactory().handle(request, response));
 imageRoutes.get("/all", (request, response) => findAllImageFactory().handle(request, response));
-imageRoutes.delete("/delete/:id", authUserJwtMiddleware, (request, response) =>
+imageRoutes.delete("/delete/", authUserJwtMiddleware, (request, response) =>
   deleteImageFactory().handle(request, response)
 );
 
