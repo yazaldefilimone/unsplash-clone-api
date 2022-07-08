@@ -9,7 +9,7 @@ export class DeleteImageController {
   async handle(request: Request, response: Response): Promise<Response> {
     try {
       const { body } = request;
-      const result = await this.deleteImageUseCase.perform(body);
+      const result = await this.deleteImageUseCase.perform({ ...body, email: request.userEmail });
 
       if (result.isLeft()) {
         return response.status(400).json({ message: result.value.message });
