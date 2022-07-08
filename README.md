@@ -74,4 +74,4 @@ yarn dev
 
 [MIT](https://github.com/yazaldefilimonepinto/unsplash-clone-api/blob/main/LICENSE) Project License
 
-Creator with 💙 by [Yazalde Filimone](https://www.linkedin.com/in/yazaldefilimonepinto)
+Creator with 💙 by [Yazalde Filimone](https://www.linkedin.com/in/yazalde-filimone/)
