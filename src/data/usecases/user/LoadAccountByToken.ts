@@ -20,6 +20,6 @@ export class LoadAccountByToken implements ILoadAccountByToken {
       return left(new NotFoundError("user"));
     }
 
-    return right({ id: result.id as string });
+    return right(result);
   }
 }
