@@ -11,13 +11,13 @@ export class AuthMiddleware {
 
   async handle(request: Request, response: Response): Promise<Response> {
     try {
-      const accessToken = request.headers.authorization;
+      const { accessToken } = request.body;
 
       if (accessToken) {
         const account = await this.loadAccountByToken.perform(accessToken);
 
         if (account.isRight()) {
-          return response.status(200).send({ id: account.value.id });
+          return response.status(200).send(account.value);
         }
         return response.status(401).json({ message: account.value.message });
       }

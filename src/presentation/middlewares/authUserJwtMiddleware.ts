@@ -26,6 +26,7 @@ export function authUserJwtMiddleware(req: Request, res: Response, next: NextFun
     }
 
     req.userId = decoded.id as string;
+    req.userEmail = decoded.email as string;
 
     return next();
   });
