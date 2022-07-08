@@ -9,7 +9,10 @@ const app = express();
 app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin: "*",
+};
+app.use(cors(corsOptions));
 app.use("/user", userRoutes);
 app.use("/image", imageRoutes);
 export { app };
