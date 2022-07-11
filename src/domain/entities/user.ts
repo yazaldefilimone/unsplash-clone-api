@@ -7,17 +7,17 @@ import { userProps, ObjectsBuildType, userBuildingResponse } from "./protocols/u
 export class User {
   public createName(name: string): Either<InvalidParamError, string> {
     const isValid = isValidName(name);
-    return isValid ? right(name) : left(new InvalidParamError(name));
+    return isValid ? right(name) : left(new InvalidParamError("name"));
   }
 
   public createEmail(email: string): Either<InvalidParamError, string> {
     const isValid = isValidEmail(email);
-    return isValid ? right(email) : left(new InvalidParamError(email));
+    return isValid ? right(email) : left(new InvalidParamError("email"));
   }
 
   public createPassword(password: string): Either<InvalidParamError, string> {
     const isValid = isValidPassword(password);
-    return isValid ? right(password) : left(new InvalidParamError(password));
+    return isValid ? right(password) : left(new InvalidParamError("password"));
   }
 
   public build(data: userProps): userBuildingResponse {
