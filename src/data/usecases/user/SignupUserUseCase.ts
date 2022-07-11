@@ -4,6 +4,7 @@ import { IUserRepository } from "@/data/protocols/repositories";
 import { left, right } from "@/shared/error-handler/either";
 import { EmailInUseError, UnexpectedError } from "@/domain/errors";
 import { Hasher } from "@/data/protocols/cryptography";
+import { User } from "@/domain/entities";
 
 export class SignupUserUseCase implements ISignupUserUseCase {
   private readonly userRepository: IUserRepository;
@@ -16,15 +17,21 @@ export class SignupUserUseCase implements ISignupUserUseCase {
 
   async perform(data: ISignupUserUseCase.Input): ISignupUserUseCase.Output {
     try {
-      const isExists = await this.userRepository.getByEmail(data.email);
+      const building = new User().build(data);
+
+      if (building.isLeft()) {
+        return left(building.value);
+      }
+      const user = building.value;
+
+      const isExists = await this.userRepository.getByEmail(user.email);
       if (isExists) {
         return left(new EmailInUseError());
       }
-      console.log({ data });
-      console.log({ isExists });
-      data.password = await this.hasher.hash(data.password);
 
-      const userId = await this.userRepository.create(data);
+      user.email = await this.hasher.hash(user.email);
+
+      const userId = await this.userRepository.create(user);
 
       return right(userId);
     } catch (error) {

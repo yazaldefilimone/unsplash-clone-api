@@ -1,8 +1,8 @@
-import { User } from '@/domain/entities';
+import { userProps } from "@/domain/entities";
 
-export interface IUserRepository{
-  create: (data: User) => Promise<{ id: string }>;
-  getById: (id: string) => Promise<User>;
-  getByEmail: (email: string) => Promise<User | null>;
+export interface IUserRepository {
+  create: (data: userProps) => Promise<{ id: string }>;
+  getById: (id: string) => Promise<userProps>;
+  getByEmail: (email: string) => Promise<userProps | null>;
   delete: (id: string) => Promise<void>;
 }
