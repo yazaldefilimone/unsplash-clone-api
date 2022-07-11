@@ -22,6 +22,7 @@ export class SignupUserUseCase implements ISignupUserUseCase {
       if (building.isLeft()) {
         return left(building.value);
       }
+
       const user = building.value;
 
       const isExists = await this.userRepository.getByEmail(user.email);
@@ -29,8 +30,8 @@ export class SignupUserUseCase implements ISignupUserUseCase {
         return left(new EmailInUseError());
       }
 
-      user.email = await this.hasher.hash(user.email);
-
+      user.password = await this.hasher.hash(user.password);
+      console.log(user);
       const userId = await this.userRepository.create(user);
 
       return right(userId);
