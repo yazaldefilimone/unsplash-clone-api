@@ -5,7 +5,7 @@ const emailRegex =
 // name may contain spaces
 const nameRegex = /^[a-zA-Z0-9 ]+$/;
 // password not contain space
-const passwordRegex = /^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{8,30}$/;
+const passwordRegex = /^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{4,30}$/;
 
 const emailSchema = Joi.object({
   email: Joi.string().email().required().regex(new RegExp(emailRegex)),
