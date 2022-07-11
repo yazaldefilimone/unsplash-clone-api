@@ -24,7 +24,7 @@ export class User {
     const objects: ObjectsBuildType = {
       name: this.createName(data.name),
       email: this.createEmail(data.email),
-      password: this.createPassword("password"),
+      password: this.createPassword(data.password),
     };
 
     if (objects.name.isLeft()) {
