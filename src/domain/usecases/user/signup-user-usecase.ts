@@ -1,4 +1,4 @@
-import { userProps } from "@/domain/entities";
+import { userProps } from "@/domain/entities/protocols";
 import { EmailInUseError, InvalidParamError, UnexpectedError } from "@/domain/errors";
 import { Either } from "@/shared/error-handler/either";
 
