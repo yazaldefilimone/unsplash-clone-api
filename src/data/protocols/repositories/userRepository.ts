@@ -1,4 +1,4 @@
-import { userProps } from "@/domain/entities";
+import { userProps } from "@/domain/entities/protocols";
 
 export interface IUserRepository {
   create: (data: userProps) => Promise<{ id: string }>;
