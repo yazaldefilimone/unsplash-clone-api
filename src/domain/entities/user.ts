@@ -24,17 +24,17 @@ export class User {
     const objects: ObjectsBuildType = {
       name: this.createName(data.name),
       email: this.createEmail(data.email),
-      password: this.createPassword(data.password),
+      password: this.createPassword("password"),
     };
 
     if (objects.name.isLeft()) {
-      return left(new InvalidParamError(data.name));
+      return left(new InvalidParamError("name"));
     }
     if (objects.email.isLeft()) {
-      return left(new InvalidParamError(data.email));
+      return left(new InvalidParamError("email"));
     }
     if (objects.password.isLeft()) {
-      return left(new InvalidParamError(data.password));
+      return left(new InvalidParamError("password"));
     }
 
     return right({
