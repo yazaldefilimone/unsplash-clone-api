@@ -1,5 +1,5 @@
 import { IUserRepository } from "@/data/protocols/repositories";
-import { userProps } from "@/domain/entities";
+import { userProps } from "@/domain/entities/protocols";
 import { UserModel } from "@/infrastructure/mongodb/models";
 
 export class UserRepository implements IUserRepository {
