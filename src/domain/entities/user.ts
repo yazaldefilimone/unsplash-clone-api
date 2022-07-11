@@ -2,17 +2,7 @@ import { Either, left, right } from "@/shared/error-handler/either";
 
 import { isValidEmail, isValidName, isValidPassword } from "@/shared/validators";
 import { InvalidParamError } from "@/domain/errors";
-
-type ObjectsBuildType = {
-  [key: string]: Either<Error, string>;
-};
-export type userProps = {
-  id?: string;
-  name: string;
-  email: string;
-  password: string;
-  Images?: Array<String>;
-};
+import { userProps, ObjectsBuildType, userBuildingResponse } from "./protocols/uerProtocol";
 
 export class User {
   public createName(name: string): Either<InvalidParamError, string> {
@@ -30,7 +20,7 @@ export class User {
     return isValid ? right(password) : left(new InvalidParamError(password));
   }
 
-  public build(data: userProps) {
+  public build(data: userProps): userBuildingResponse {
     const objects: ObjectsBuildType = {
       name: this.createName(data.name),
       email: this.createEmail(data.email),
